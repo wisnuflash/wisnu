@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
+                echo 'check'
                 // Check out your source code from your repository
                 // For example, using Git:
                 // git branch: 'your-branch', url: 'your-repo-url.git'
