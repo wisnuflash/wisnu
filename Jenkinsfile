@@ -1,14 +1,14 @@
 pipeline {
     agent any
     
-    // stages {
-    //     stage('Checkout Code') {
-    //         steps {
-    //             // Check out your source code from your repository
-    //             // For example, using Git:
-    //             git branch: 'your-branch', url: 'your-repo-url.git'
-    //         }
-    //     }
+    stages {
+        stage('Checkout Code') {
+            steps {
+                // Check out your source code from your repository
+                // For example, using Git:
+                // git branch: 'your-branch', url: 'your-repo-url.git'
+            }
+        }
         
         stage('Deploy to Web Server') {
             steps {
