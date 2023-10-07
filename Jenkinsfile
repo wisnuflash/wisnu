@@ -14,18 +14,7 @@ pipeline {
         stage('Deploy to Web Server') {
             steps {
                 // Use the "Publish Over SSH" plugin to copy files to the server
-                script {
-                    def remote = [
-                        name: 'Your SSH Server Name', // Give it a name
-                        remote: '192.168.23.103',    // Server IP address
-                        user: 'root',                // SSH username
-                        password: 'wisnu',           // SSH password (consider using SSH keys)
-                        sourceFiles: '**/*',         // Source files to upload
-                        removePrefix: 'path/to/your/source/', // Optional: Remove this prefix from the source path
-                        remoteDirectory: '/var/www/html/multibranch/' // Remote destination directory
-                    ]
-                    sshPublisher(publishers: [sshPublisherDesc(configName: remote)])
-                }
+               sshPublisher(publishers: [sshPublisherDesc(configName: 'production-server', sshCredentials: [encryptedPassphrase: '{AQAAABAAAAAQBBhbJGlh2a+PA60TsVI5ly4ecssXy08NjXpEhukuIC0=}', key: '', keyPath: '', username: 'root'], transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/var/www/html/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
     }
