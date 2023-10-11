@@ -19,6 +19,9 @@ triggers {
                 message "Deploy to production?"
                 id "simple-input"
             }
+            steps{
+                echo 'amannn'
+            }
         }
         stage('Deploy to Web Server') {
              when {
