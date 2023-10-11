@@ -9,6 +9,12 @@ triggers {
                 echo 'check'
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'dev-ssh', sshCredentials: [encryptedPassphrase: '{AQAAABAAAAAQKLp/lZ/y2VaMXfX9YHs2wD3CbvL5m4gUFwf/pktAMvM=}', key: '', keyPath: '', username: 'git'], transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: 'wisnu', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
+            script {
+                    def browsers = ['chrome', 'firefox']
+                    for (int i = 0; i < browsers.size(); ++i) {
+                        echo "Testing the ${browsers[i]} browser"
+                    }
+            
         }
         stage('Parallel In Sequential') {
                     parallel {
@@ -30,7 +36,7 @@ triggers {
                 branch 'main'
             }
             input {
-                message "Deploy to production?"
+                message "Apakah tidak ada bug atau error ?"
                 id "simple-input"
             }
             steps{
