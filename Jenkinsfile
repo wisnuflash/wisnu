@@ -11,8 +11,13 @@ triggers {
             }
         }
         stage('Test Web'){
-            steps{
-                echo 'test'
+            when {
+                beforeInput true
+                branch 'main'
+            }
+            input {
+                message "Deploy to production?"
+                id "simple-input"
             }
         }
         stage('Deploy to Web Server') {
