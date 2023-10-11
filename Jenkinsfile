@@ -12,7 +12,7 @@ triggers {
         }
         stage('Test Web'){
             steps{
-                
+                echo 'test'
             }
         }
         stage('Deploy to Web Server') {
