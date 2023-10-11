@@ -12,6 +12,9 @@ triggers {
         }
         
         stage('Deploy to Web Server') {
+             when {
+                branch 'laravel'
+            }
             steps {
                 
                 // Use the "Publish Over SSH" plugin to copy files to the server
