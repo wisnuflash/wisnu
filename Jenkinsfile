@@ -10,20 +10,7 @@ triggers {
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'dev-ssh', sshCredentials: [encryptedPassphrase: '{AQAAABAAAAAQKLp/lZ/y2VaMXfX9YHs2wD3CbvL5m4gUFwf/pktAMvM=}', key: '', keyPath: '', username: 'git'], transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: 'wisnu', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
-        stage('Parallel In Sequential') {
-                    parallel {
-                        stage('In Parallel 1') {
-                            steps {
-                                echo "In Parallel 1"
-                            }
-                        }
-                        stage('In Parallel 2') {
-                            steps {
-                                echo "In Parallel 2"
-                            }
-                        }
-                    }
-                }
+        
         stage('Test Web'){
             when {
                 beforeInput true
